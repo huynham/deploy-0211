@@ -4,18 +4,24 @@ import AddTask from './AddTask';
 import TodoList from './TodoList';
 
 function TaskList() {
+    // khai bao useState hook để cài đặt truwe, false ; để mặc định là false
 const [showAddForm, setshowAddform ] = useState(false);
+// khai bao useState hook để cài đặt hiển thị 2 task ví dụ trên màn hình
 const [namep,setName]=useState(["task-1","task-2"]);
+// khai bao hàm mũi tên cài đặt  showAddForm gọi trong function TaskLisk
     const setStatus = () => {
         setshowAddform(true);
     }
+    // khai bao hàm mũi tên cài đặt  showAddForm gọi trong function Addtask
     const closeForm = () => {
         setshowAddform(false);
     }
+    // cong thêm task mới do người dùng nhập vào 2 task đã cài trước đó
     const addTask = (name) => {
       namep.push(name)
         
     }
+    // nếu showAddForm === true gọi gàm Addtask
    if (showAddForm === true){
        return (
         <AddTask addTask={addTask} closeForm={closeForm} />
