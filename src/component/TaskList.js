@@ -4,7 +4,7 @@ import AddTask from './AddTask';
 import TodoList from './TodoList';
 
 function TaskList() {
-    // khai bao useState hook để cài đặt truwe, false ; để mặc định là false
+    // khai bao useState hook để cài đặt true, false ; để mặc định là false
 const [showAddForm, setshowAddform ] = useState(false);
 // khai bao useState hook để cài đặt hiển thị 2 task ví dụ trên màn hình
 const [namep,setName]=useState(["task-1","task-2"]);
