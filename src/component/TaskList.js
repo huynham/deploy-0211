@@ -26,13 +26,17 @@ const [namep,setName]=useState(["task-1","task-2"]);
        return (
         <AddTask addTask={addTask} closeForm={closeForm} />
        )
+    /* showAddForm === false hiển thị nội dung bên dưới ra màn hình */
+    
    }else {
         
             return (
                 <div className="container">
                     <br />
-                    <br />
+                    <br /> 
+                    {/* onclick gọi tới setStatus thay đổi giá trị showAddForm thành true để chuyển sang hàm AddTask  */}
                     <button type="button" className="btn btn-outline-primary" onClick={setStatus} >Add Task</button>
+
                     <h2>List Task</h2>
                     <table className="table table-striped">
                         
@@ -42,6 +46,7 @@ const [namep,setName]=useState(["task-1","task-2"]);
                         
                         
                             {
+                                // map qua mảng namep, gửi qua name qua Todolist để in, hiển thị kết quả mảng namep
                                 namep.map(name=> {
                                     return <TodoList name={name}
                                     />
