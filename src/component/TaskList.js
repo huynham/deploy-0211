@@ -1,9 +1,9 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AddTask from './AddTask';
 import TodoList from './TodoList';
 
-function TaskList() {
+function TaskList(props) {
     // khai bao useState hook để cài đặt true, false ; để mặc định là false
 const [showAddForm, setshowAddform ] = useState(false);
 // khai bao useState hook để cài đặt hiển thị 2 task ví dụ trên màn hình
@@ -19,8 +19,20 @@ const [namep,setName]=useState(["task-1","task-2"]);
     // cong thêm task mới do người dùng nhập vào 2 task đã cài trước đó
     const addTask = (name) => {
       namep.push(name)
-        
+    
     }
+    const xoaBot = () => {
+        namep.pop();
+         }
+    const Remove=()=> {
+        const newtodo = [...namep];
+            newtodo.pop();
+            setName(newtodo);
+        }
+        
+        
+        
+    
     // nếu showAddForm === true gọi gàm Addtask
    if (showAddForm === true){
        return (
@@ -36,6 +48,7 @@ const [namep,setName]=useState(["task-1","task-2"]);
                     <br /> 
                     {/* onclick gọi tới setStatus thay đổi giá trị showAddForm thành true để chuyển sang hàm AddTask  */}
                     <button type="button" className="btn btn-outline-primary" onClick={setStatus} >Add Task</button>
+                    <button type="button" className="btn btn-outline-primary" onClick={Remove} >Xoa Task</button>
 
                     <h2>List Task</h2>
                     <table className="table table-striped">
@@ -43,16 +56,15 @@ const [namep,setName]=useState(["task-1","task-2"]);
                             <tr>
                                 <th>Name of task</th>
                             </tr>
-                        
-                        
                             {
-                                // map qua mảng namep, gửi qua name qua Todolist để in, hiển thị kết quả mảng namep
-                                namep.map(name=> {
+                                
+                                // map qua mảng namep, gửi name qua Todolist để in, hiển thị kết quả mảng namep
+                                namep.map((name)=> {
                                     return <TodoList name={name}
                                     />
                                 })
                             }
-                        
+                    
                     </table>
                 </div>
             );
